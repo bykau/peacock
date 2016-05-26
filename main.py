@@ -8,7 +8,7 @@ X_COOR_COL = 5
 Y_COOR_COL = 6
 MAX_X = 480
 MAX_Y = 480
-work_dir = '/Users/bykau/Dropbox/MovieTest/'
+work_dir = '../02/'
 
 
 def draw_oval(img, oval_radius, oval_center, oval_color):
@@ -64,7 +64,7 @@ success, image = vidcap.read()
 # init the video writer
 height, width, layers = image.shape
 fourcc = cv2.cv.CV_FOURCC('m', 'p', '4', 'v')
-output = cv2.VideoWriter('/Users/bykau/Desktop/output.avi', fourcc, 60, (width, height))
+output = cv2.VideoWriter(work_dir+'output.avi', fourcc, 60, (width, height))
 
 while success:
     # if there are coordinates then draw the yellow dot, otherwise just output a plain images
