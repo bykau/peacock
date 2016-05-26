@@ -69,7 +69,9 @@ output = cv2.VideoWriter(work_dir+'output.avi', fourcc, 60, (width, height))
 while success:
     # if there are coordinates then draw the yellow dot, otherwise just output a plain images
     if frame_num in coors:
-        draw_oval(image, OVAL_RADIUS, coors[frame_num], OVAL_COLOR)
+        x, y = coors[frame_num]
+        # do you calculations here
+        draw_oval(image, OVAL_RADIUS, (x, y), OVAL_COLOR)
     output.write(image)
     frame_num += 1
     success, image = vidcap.read()
