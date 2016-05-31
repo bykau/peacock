@@ -4,8 +4,12 @@ import cv2
 OVAL_COLOR = [0, 255, 255]
 OVAL_RADIUS = 4
 FRAME_COL = 0
-X_COOR_COL = 5
-Y_COOR_COL = 6
+X_COOR_COL = 0
+Y_COOR_COL = 1
+N_SKIPPED_LINES = 0
+COOR_FILE = 'FinalGazeCoordinates.csv'
+SCALE = False
+SEPARATOR = ','
 work_dir = '../02/'
 
 
@@ -38,19 +42,22 @@ def load_coordinates(input_path, height, width):
         # scaling
         Xs = []
         Ys = []
-        for i in range(7, len(lines)):
+        for i in range(N_SKIPPED_LINES, len(lines)):
             line = lines[i]
-            vals = line.split(' ')
+            vals = line.split(SEPARATOR)
             Xs.append(float(vals[X_COOR_COL]))
             Ys.append(float(vals[Y_COOR_COL]))
         minX = min(Xs)
         maxX = max(Xs)
         minY = min(Ys)
         maxY = max(Ys)
-        for i in range(7, len(lines)):
+        for i in range(N_SKIPPED_LINES, len(lines)):
             line = lines[i]
-            vals = line.split(' ')
-            res[int(vals[FRAME_COL])] = (int((float(vals[X_COOR_COL]) - minX)*(height-1)/(maxX-minX)), int((float(vals[Y_COOR_COL]) - minY)*(width-1)/(maxY-minY)))
+            vals = line.split(SEPARATOR)
+            if SCALE:
+                res[int(vals[FRAME_COL])] = (int((float(vals[X_COOR_COL]) - minX)*(height-1)/(maxX-minX)), int((float(vals[Y_COOR_COL]) - minY)*(width-1)/(maxY-minY)))
+            else:
+                res[i+1] = (int(float(vals[X_COOR_COL])), int(float(vals[Y_COOR_COL])))
     return res
 
 
@@ -61,7 +68,7 @@ success, image = vidcap.read()
 
 # init the video writer
 height, width, layers = image.shape
-coors = load_coordinates(work_dir+'05-19-12_No53_363301_Cop.txt', height, width)
+coors = load_coordinates(work_dir+COOR_FILE, height, width)
 fourcc = cv2.cv.CV_FOURCC('m', 'p', '4', 'v')
 output = cv2.VideoWriter(work_dir+'output.avi', fourcc, 60, (width, height))
 
