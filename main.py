@@ -11,7 +11,7 @@ COOR_FILE = 'FinalGazeCoordinates.csv'
 SCALE = False
 SEPARATOR = ','
 work_dir = '../02/'
-
+vidcap = cv2.VideoCapture(work_dir+'05-19-12_No53_363301_Cop.mov')
 
 def draw_oval(img, oval_radius, oval_center, oval_color, height, width):
     '''
@@ -62,7 +62,6 @@ def load_coordinates(input_path, height, width):
 
 
 
-vidcap = cv2.VideoCapture(work_dir+'05-19-12_No53_363301_Cop.mov')
 frame_num = 1
 success, image = vidcap.read()
 
