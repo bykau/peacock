@@ -1,10 +1,7 @@
 library(reshape)
 
-# set a working directory where all data files are placed
-setwd("~/Desktop/Peacock/")
 
-# read MaleEyeTrack_ResultsNoCops.xlsx/Male as csv file
-
+setwd('~/Dropbox/Projects/Jessica/peacock/poisson/')
 for (expr in c('Frontal', 'Back', 'Female')){
   for (directed in c('Both', 'Directed', 'NonDirected')){
     for (eye in c('Both', 'L', 'R')){
@@ -16,6 +13,9 @@ for (expr in c('Frontal', 'Back', 'Female')){
       if (eye != 'Both') {
         dat <- dat[dat$EyeRecord == eye, ]
       }
+      # we have zero counts for BlackFluff ROI so we remove it
+      dat <- dat[dat$ROI != 'BlackFluff',]
+
       # group by MaleID, ROI and OtherMaleID and summing total frames/counts
       count_df <- as.data.frame(recast(dat[, c('ntot', 'MaleID', 'ROI', 'Count', 'OtherMaleID')], MaleID + ROI + OtherMaleID ~ variable, fun.aggregate = sum))
       

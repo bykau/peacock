@@ -15,7 +15,7 @@ The data/input folder consists of the data files in the format suitable for Prof
 
 The data/output folder contains the obtained quantile files.
 
-All file names are in the format experiment type + '_' + directed + '_' + eye.
+All file names are in the format experiment type + '_' + directed + '_' + eye + '_' + include_male.
 
 The following experiments are not run because they contain almost all zeros:
-('Back NonDirected Both', 'Back NonDirected R', 'Female NonDirected Both', 'Female NonDirected R', 'Female NonDirected L'
+'Back NonDirected Both', 'Back NonDirected R', 'Female NonDirected Both', 'Female NonDirected R', 'Female NonDirected L'
