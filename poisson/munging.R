@@ -15,7 +15,8 @@ for (expr in c('Frontal', 'Back', 'Female')){
       }
       # we have zero counts for BlackFluff ROI so we remove it
       dat <- dat[dat$ROI != 'BlackFluff',]
-
+      dat$ROI <- droplevels(dat$ROI)
+      
       # group by MaleID, ROI and OtherMaleID and summing total frames/counts
       count_df <- as.data.frame(recast(dat[, c('ntot', 'MaleID', 'ROI', 'Count', 'OtherMaleID')], MaleID + ROI + OtherMaleID ~ variable, fun.aggregate = sum))
       

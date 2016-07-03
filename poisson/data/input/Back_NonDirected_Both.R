@@ -87,20 +87,20 @@ c(0.012331089860373, 0.00812807732763184, 0.0596433221732584,
 0.171563657113001, 0.0630369107446084, 0.400808722732866, 0.102634728686434, 
 0.00945717349906159, 0.0304698024872988)
 roi <-
-c(2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 2L, 3L, 4L, 5L, 6L, 7L, 
-8L, 9L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 
-8L, 8L, 9L, 9L, 10L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 
-6L, 7L, 7L, 8L, 8L, 9L, 9L, 10L, 10L, 2L, 3L, 4L, 5L, 6L, 7L, 
-8L, 9L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 
-8L, 8L, 9L, 9L, 10L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 
-6L, 7L, 7L, 8L, 8L, 9L, 9L, 10L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 
-5L, 5L, 6L, 6L, 7L, 7L, 8L, 8L, 9L, 9L, 10L, 10L, 2L, 2L, 3L, 
-3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 8L, 8L, 9L, 9L, 10L, 10L, 
-2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 2L, 3L, 4L, 5L, 6L, 7L, 
-8L, 9L, 10L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 
-8L, 8L, 9L, 9L, 10L, 10L, 2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 
-5L, 5L, 5L, 6L, 6L, 6L, 7L, 7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 
-10L, 10L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L)
+c(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 
+7L, 8L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 
+7L, 8L, 8L, 9L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 
+6L, 7L, 7L, 8L, 8L, 9L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 
+1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 8L, 8L, 
+9L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 
+8L, 8L, 9L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 6L, 6L, 
+7L, 7L, 8L, 8L, 9L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 
+6L, 6L, 7L, 7L, 8L, 8L, 9L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 
+9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 1L, 2L, 2L, 3L, 3L, 
+4L, 4L, 5L, 5L, 6L, 6L, 7L, 7L, 8L, 8L, 9L, 9L, 1L, 1L, 1L, 2L, 
+2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L, 7L, 7L, 
+7L, 8L, 8L, 8L, 9L, 9L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L
+)
 male <-
 c(2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 8L, 8L, 8L, 8L, 8L, 8L, 
 8L, 8L, 8L, 6L, 7L, 6L, 7L, 6L, 7L, 6L, 7L, 6L, 7L, 6L, 7L, 6L, 
@@ -137,8 +137,7 @@ nmale <-
 nfem <-
 14L
 nroi <-
-10L
+9L
 roinames <-
-c("BlackFluff", "DenseFeathers", "Leg", "LongFeathers", "LowerEyeSpots", 
-"LowerFishtails", "UpperEyeSpots", "UpperFishtails", "WhitePuff", 
-"Wing")
+c("DenseFeathers", "Leg", "LongFeathers", "LowerEyeSpots", "LowerFishtails", 
+"UpperEyeSpots", "UpperFishtails", "WhitePuff", "Wing")
