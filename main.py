@@ -1,4 +1,5 @@
 import cv2
+import math
 
 
 OVAL_COLOR = [0, 255, 255]
@@ -10,8 +11,11 @@ N_SKIPPED_LINES = 0
 COOR_FILE = 'FinalGazeCoordinates.csv'
 SCALE = False
 SEPARATOR = ','
-work_dir = '../02/'
-vidcap = cv2.VideoCapture(work_dir+'05-19-12_No53_363301_Cop.mov')
+work_dir = '/Users/bykau/Downloads/'
+vidcap = cv2.VideoCapture(work_dir+'05-19-12_No51_248420.mov')
+RING_RADIUS_1 = 30         # the radius of inner ring
+RING_RADIUS_2 = 60         # the radius of outer ring
+RING_COLOR = [255, 0, 255] # magenta RGB color
 
 def draw_oval(img, oval_radius, oval_center, oval_color, height, width):
     '''
@@ -27,6 +31,21 @@ def draw_oval(img, oval_radius, oval_center, oval_color, height, width):
             if (x-oval_center[0])*(x-oval_center[0]) + (y-oval_center[1])*(y-oval_center[1]) <= oval_radius*oval_radius:
                 if x < height and y < width:
                     img[x, y] = oval_color
+
+def draw_rings(img, ring_radius_1, ring_radius_2, ring_center, ring_color):
+    '''
+    Draws two magenta rings.
+    :return: 
+    '''
+    for alpha in range(360):
+        ring_1_x = int(ring_center[0] + ring_radius_1*math.cos(math.radians(alpha)))
+        ring_1_y = int(ring_center[1] + ring_radius_1*math.sin(math.radians(alpha)))
+
+        ring_2_x = int(ring_center[0] + ring_radius_2*math.cos(math.radians(alpha)))
+        ring_2_y = int(ring_center[1] + ring_radius_2*math.sin(math.radians(alpha)))
+
+        img[ring_1_x, ring_1_y] = ring_color
+        img[ring_2_x, ring_2_y] = ring_color
 
 
 def load_coordinates(input_path, height, width):
@@ -77,6 +96,7 @@ while success:
         x, y = coors[frame_num]
         # do you calculations here
         draw_oval(image, OVAL_RADIUS, (x, y), OVAL_COLOR, height, width)
+        draw_rings(image, RING_RADIUS_1, RING_RADIUS_2, (x, y), RING_COLOR)
     output.write(image)
     frame_num += 1
     success, image = vidcap.read()
