@@ -44,8 +44,10 @@ def draw_rings(img, ring_radius_1, ring_radius_2, ring_center, ring_color):
         ring_2_x = int(ring_center[0] + ring_radius_2*math.cos(math.radians(alpha)))
         ring_2_y = int(ring_center[1] + ring_radius_2*math.sin(math.radians(alpha)))
 
-        img[ring_1_x, ring_1_y] = ring_color
-        img[ring_2_x, ring_2_y] = ring_color
+        if image.shape[0] > ring_1_x and image.shape[1] > ring_1_y:
+            img[ring_1_x, ring_1_y] = ring_color
+        if image.shape[0] > ring_2_x and image.shape[1] > ring_2_y:
+            img[ring_2_x, ring_2_y] = ring_color
 
 
 def load_coordinates(input_path, height, width):
